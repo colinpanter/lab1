@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<title>Testing Lab</title>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Montserrat'>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/dropsearch.css">
+
+    <script src="js/scripts.js"></script>
+
+</head>
+<body onload="search()">
+	<div id="nav">
+		<div id="logo">
+			Lab 2
+		</div>
+	</div>
+    <br/>
+	<div id="page">
+        <div class="dropsearch">
+            <input type="text" class="input" id="dropinput" oninput="search()">
+            <i class="reset" onclick="reset()"></i>
+            <div id="elements" class="dropsearch-content">
+            </div>
+        </div>
+	</div>
+</body>
+</html>
