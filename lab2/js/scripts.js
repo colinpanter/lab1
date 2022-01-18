@@ -1,4 +1,5 @@
-var elements = ["Yeet", "Foo", "Bar"]
+var elements = "Lorem ipsum dolor sit amet consectetur adipiscing elit Proin quis nibh arcu Donec rhoncus a".split(" ")
+
 function search() {
     document.getElementById("elements").innerHTML = ""
     elements.forEach(element => {
