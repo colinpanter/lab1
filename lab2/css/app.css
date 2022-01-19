@@ -21,34 +21,9 @@ html, body {
 }
 
 #page {
-    padding: 20px;
     display: flex;
+    justify-content: center;
+    width: 100%;
     flex-direction: row;
     align-items: center;
-}
-
-@media screen and (max-width: 600px) {
-    #nav {
-        position: absolute;
-        width: 100%;
-        z-index: 1000;
-        overflow-y: hidden;
-        display: block;
-        cursor: pointer;
-
-        -moz-transition: 0.5s;
-        -ms-transition: 0.5s;
-        -o-transition: 0.5s;
-        -webkit-transition: 0.5s;
-        transition: 0.5s;
-    }
-
-    #nav #logo {
-        display: block;
-        float: none;
-    }
-
-    #page {
-        padding-top: 68px;
-    }
 }

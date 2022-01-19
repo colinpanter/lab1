@@ -1,24 +1,17 @@
 .dropsearch {
     position: relative;
-    margin: auto;
-    display: inline-block;
-    width: 500px;
-    min-width: 100px;
+    display: block;
+    width: 40%;
+    min-width: 300px;
 
     color: black;
     background-color: transparent;
 }
 
-@media screen and (max-width: 600px) {
-    .dropsearch {
-        width: 300px;
-    }
-}
-
 #dropinput {
-    display: inline;
+    display: flex;
     height: 30px;
-    width: inherit;
+    width: 100%;
     font-size: 25px;
     z-index: 1;
 }
@@ -27,7 +20,7 @@
     display: none;
     position: absolute;
     top: 8px;
-    right: 8px;
+    right: 5px;
     background-color: rgba(128, 128, 128, 0);
     border-radius: 25%;
     height: 20px;
@@ -48,26 +41,27 @@
 }
 
 .dropsearch:focus-within .reset, .dropsearch:hover .reset{
-    display: flex;
+    display: inline;
 }
 
 .dropsearch-content {
     display: none;
     position: absolute;
+    width: 99%;
     background-color: white;
-    width: inherit;
 }
 
 .dropsearch:focus-within .dropsearch-content, .dropsearch:hover .dropsearch-content {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .dropsearch-content p {
-  display: block;
-  background-color: white;
-  padding: 12px 16px;
-  text-decoration: none;
-  margin: 0;
+    display: flex;
+    background-color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    margin: 0;
 }
 
 .dropsearch-content p:hover {
