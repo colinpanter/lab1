@@ -10,12 +10,10 @@ var elements = ["White",
                 "Teal",
                 "Silver",
                 "Purple",
-                "Navy blue",
-                "Pea green",
+                "Navy",
                 "Gray",
                 "Orange",
                 "Maroon",
-                "Charcoal",
                 "Aquamarine",
                 "Coral",
                 "Fuchsia",
@@ -25,7 +23,6 @@ var elements = ["White",
                 "Khaki",
                 "Hot pink",
                 "Magenta",
-                "Olden",
                 "Plum",
                 "Olive",
                 "Cyan"]
@@ -39,12 +36,31 @@ function search() {
         if (element.toLowerCase().includes(inputStr)) {
             foundMatches = true;
 
-            var p = document.createElement('p');
-            p.className = "element";
-            p.onclick = function() {choose(element)};
+            var color = element.toLowerCase().replace(' ', '')
+
+            var d = document.createElement('div');
+            d.className = "element";
+            d.onclick = function() {
+                document.getElementById("dropinput").focus()
+                document.getElementById("dropinput").value = element;
+                search();
+            };
+
+            var p = document.createElement('span');
             p.innerHTML = element;
 
-            document.getElementById("elements").appendChild(p)
+            var c = document.createElement('div');
+            c.className = "color"
+            c.style.backgroundColor = color
+            
+            d.appendChild(c)
+            d.appendChild(p)
+
+            document.getElementById("elements").appendChild(d)
+
+            if (element.toLowerCase() === inputStr) {
+                document.body.style.backgroundColor = color
+            }
         }
     });
 
@@ -55,14 +71,4 @@ function search() {
 
         document.getElementById("elements").appendChild(p)
     }
-}
-
-function choose(s) {
-    document.getElementById("dropinput").value = s;
-    search();
-}
-
-function reset() {
-    document.getElementById("dropinput").value = "";
-    search();
 }
