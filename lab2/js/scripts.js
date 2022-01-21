@@ -1,16 +1,59 @@
-var elements = "Lorem ipsum dolor sit amet consectetur adipiscing elit Proin quis nibh arcu Donec rhoncus a".split(" ")
+var elements = ["White",
+                "Yellow",
+                "Blue",
+                "Red",
+                "Green",
+                "Black",
+                "Brown",
+                "Azure",
+                "Ivory",
+                "Teal",
+                "Silver",
+                "Purple",
+                "Navy blue",
+                "Pea green",
+                "Gray",
+                "Orange",
+                "Maroon",
+                "Charcoal",
+                "Aquamarine",
+                "Coral",
+                "Fuchsia",
+                "Wheat",
+                "Lime",
+                "Crimson",
+                "Khaki",
+                "Hot pink",
+                "Magenta",
+                "Olden",
+                "Plum",
+                "Olive",
+                "Cyan"]
 
 function search() {
     var foundMatches = false;
+    var inputStr = document.getElementById("dropinput").value.toLowerCase()
     document.getElementById("elements").innerHTML = ""
-    elements.forEach(element => {
-        if (element.includes(document.getElementById("dropinput").value)) {
+
+    elements.forEach(function(element) {
+        if (element.toLowerCase().includes(inputStr)) {
             foundMatches = true;
-            document.getElementById("elements").innerHTML += "<p class=\"element\" onclick=\"choose('"+element+"')\">"+element+"</p>";
+
+            var p = document.createElement('p');
+            p.className = "element";
+            p.onclick = function() {choose(element)};
+            p.innerHTML = element;
+
+            document.getElementById("elements").appendChild(p)
         }
     });
+
     if (!foundMatches) {
-        document.getElementById("elements").innerHTML += "<p class=\"noresults\"><i>No results found</i></p>";
+        var p = document.createElement('p');
+        p.className = "noresults";
+        p.innerHTML = "<i>No results found</i>";
+
+        document.getElementById("elements").appendChild(p)
     }
 }
 
