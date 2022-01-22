@@ -39,7 +39,7 @@ function search() {
             var color = element.toLowerCase().replace(' ', '')
 
             var d = document.createElement('div');
-            d.className = "element";
+            d.className = "element hoverable";
             d.onclick = function() {
                 document.getElementById("dropinput").focus()
                 document.getElementById("dropinput").value = element;
@@ -66,7 +66,8 @@ function search() {
 
     if (!foundMatches) {
         var p = document.createElement('p');
-        p.className = "noresults";
+        p.className = "element";
+        p.style.color = "gray";
         p.innerHTML = "<i>No results found</i>";
 
         document.getElementById("elements").appendChild(p)
