@@ -9,16 +9,16 @@
     background-color: transparent;
 }
 
+.input {
+    position: relative;
+}
+
 #dropinput {
-    display: flex;
+    display: block;
     height: 30px;
     width: 100%;
     font-size: 20px;
     z-index: 1;
-}
-
-input[type="search"]::-webkit-search-cancel-button {
-    cursor: pointer;
 }
 
 .dropsearch-content {
@@ -31,7 +31,7 @@ input[type="search"]::-webkit-search-cancel-button {
     border: 1px solid black;
 }
 
-.dropsearch:focus-within .dropsearch-content ,.dropsearch:hover .dropsearch-content
+.dropsearch:focus-within .dropsearch-content, .dropsearch:hover .dropsearch-content
 {
     display: flex;
     flex-direction: column;
@@ -57,4 +57,21 @@ input[type="search"]::-webkit-search-cancel-button {
 .hoverable:hover {
     cursor: pointer;
     filter: brightness(80%);
+}
+
+.reset {
+    display: block;
+    position: absolute;
+    top: 6px;
+    right: 0px;
+    background-color: transparent;
+    border-style: hidden;
+
+    cursor: pointer;
+    z-index: 2;
+}
+
+.reset::after {
+    font-size: 20px;
+    content: 'X';
 }

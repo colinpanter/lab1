@@ -41,7 +41,6 @@ function search() {
             var d = document.createElement('div');
             d.className = "element hoverable";
             d.onclick = function() {
-                document.getElementById("dropinput").focus()
                 document.getElementById("dropinput").value = element;
                 search();
             };
@@ -72,4 +71,9 @@ function search() {
 
         document.getElementById("elements").appendChild(p)
     }
+}
+
+function reset() {
+    document.getElementById("dropinput").value =  "";
+    search();
 }
