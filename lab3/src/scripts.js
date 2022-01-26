@@ -11,8 +11,7 @@ class Toast{
 
   showToast() {
     let toast = document.createElement("div");
-    let biggerToast = document.createElement("div");
-    let title = document.createElement("p");
+    let title = document.createElement("h1");
     let text = document.createElement("p");
     let img = document.createElement("img");
     
@@ -24,20 +23,20 @@ class Toast{
       img.src = ""
     }
 
-    title.innerHTML = this.type;
-    text.innerHTML = this.message;
     toast.className = "toast";
-    biggerToast.className = "biggerToast";
+    title.innerHTML = this.type;
+    title.className = "unselectable"
+    text.innerHTML = this.message;
+    text.className = "unselectable"
 
-    biggerToast.appendChild(toast);
-    toast.appendChild(img);
+    // toast.appendChild(img);
     toast.appendChild(title);
     toast.appendChild(text);
 
-    biggerToast.onclick = function(){ 
-      biggerToast.remove();
+    toast.onclick = function(){ 
+      toast.remove();
      };
 
-    document.getElementById("plate").appendChild(biggerToast);
+    document.getElementById("plate").appendChild(toast);
   }
 }
