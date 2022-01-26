@@ -22,8 +22,10 @@ html, body {
 
 #page {
     display: flex;
+    flex-direction: column-reverse;
     justify-content: center;
     width: 100%;
-    flex-direction: row;
     align-items: center;
+    position: absolute;
+    bottom: 0;
 }

@@ -5,10 +5,12 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Montserrat'>
     <link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/toaster.css">
+
 	<title>Testing Lab</title>
     <script type="module">
-        import {toast} from "./src/scripts.js";
-        window.toast = toast;
+        import {toaster} from "./src/scripts.js";
+        window.toaster = toaster;
     </script>
 
 </head>
@@ -20,9 +22,15 @@
 	</div>
     <br/>
 	<div id="page">
-    <div id="toast">
-        <button  type="button" class="button" onclick="toast()">Lab 3</button>
-    </div>
+    	<div id="controlPanel">
+			<input id="input">
+			<div id="buttonPanel">
+        		<button  type="button" class="button" onclick="toaster('Warning')">Erreur</button>
+				<button  type="button" class="button" onclick="toaster('Success')">Succès</button>
+				<button  type="button" class="button" onclick="toaster('Info')">Info</button>
+    		</div>
+		</div>
+		<div id="plate"></div>
 	</div>
 </body>
 </html>
