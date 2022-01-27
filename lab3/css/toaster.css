@@ -12,6 +12,12 @@
   color: black;
   border: 5px solid rgb(101, 67, 33);
   background-color: rgb(250, 184, 66);
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  background-size: 100px 100px;
+  background-position: bottom;
 }
 .toast::before,
 .toast::after {
@@ -121,5 +127,6 @@
 }
 
 .toast > p {
-  font-size: 20px;
+  font-size: 16px;
+  text-align: center;
 }

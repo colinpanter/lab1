@@ -28,26 +28,20 @@ export function makeToast() {
     const message = inputField.value;
     
     let toast = document.createElement("div");
-    let title = document.createElement("h1");
     let text = document.createElement("p");
-    let img = document.createElement("img");
     
     if(type === "Warning"){
-        img.src = ""
+        toast.style.backgroundImage = 'url("https://upload.wikimedia.org/wikipedia/commons/5/53/Eo_circle_red_letter-x.svg")'
     } else if(type === "Success"){
-        img.src = ""
+        toast.style.backgroundImage = 'url("https://upload.wikimedia.org/wikipedia/commons/3/3b/Eo_circle_green_checkmark.svg")'
     } else if(type === "Info"){
-        img.src = ""
+        toast.style.backgroundImage = 'url("https://upload.wikimedia.org/wikipedia/commons/3/37/Eo_circle_blue_info.svg")'
     }
 
     toast.className = "toast";
-    title.innerHTML = type;
-    title.className = "unselectable"
     text.innerHTML = message;
     text.className = "unselectable"
 
-    // toast.appendChild(img);
-    toast.appendChild(title);
     toast.appendChild(text);
 
     toast.onclick = function(){toast.remove();};
