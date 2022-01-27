@@ -1,4 +1,5 @@
-const toaster = document.getElementById("controlPanel");
+import {makeToast} from "./toaster.js"
+
 let handle = document.getElementById("handle");
 
 let handleClicked = false;
@@ -26,5 +27,9 @@ function mouseDown(e) {
 }
 
 function mouseUp(e) {
-    handleClicked = false;
+    if (handleClicked) {
+        handleClicked = false;
+        if (handle.offsetTop > 150) {makeToast();}
+        handle.style.top = "70px";
+    }
 }

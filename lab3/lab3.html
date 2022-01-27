@@ -10,9 +10,7 @@
 
 	<title>Testing Lab</title>
     <script type="module">
-        import {toaster, choose, load} from "./src/scripts.js";
-        window.toaster = toaster;
-        window.choose = choose;
+        import load from "./src/scripts.js";
 		window.load = load;
     </script>
 
@@ -28,11 +26,11 @@
     	<div id="controlPanel" class="unselectable">
 			<input id="input">
 			<div id="buttonPanel" class="unselectable">
-        		<button  type="button" class="unselectable active button" onclick="choose('Warning')" value="Warning">Erreur</button>
-				<button  type="button" class="unselectable button" onclick="choose('Success')" value="Success">Succès</button>
-				<button  type="button" class="unselectable button" onclick="choose('Info')" value="Info">Info</button>
+        		<button  type="button" class="unselectable button" value="Warning">Erreur</button>
+				<button  type="button" class="unselectable button" value="Success">Succès</button>
+				<button  type="button" class="unselectable button" value="Info">Info</button>
     		</div>
-			<div id="handle" onclick="toaster()"></div>
+			<div id="handle"></div>
 		</div>
 		<div id="plate"></div>
 	</div>
