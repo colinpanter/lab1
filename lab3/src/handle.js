@@ -1,14 +1,12 @@
 import {makeToast} from "./toaster.js"
 
-let handle = document.getElementById("handle");
+const handle = document.getElementById("handle");
+const placeholderToast = document.getElementById("placeholderToast");
 
 let handleClicked = false;
-let offset = 0;
-let toasterTop = 0;
+let start;
 
 export default function loadHandle() {
-    toasterTop = 0;
-
     document.addEventListener('mousemove', moveHandle);
     handle.addEventListener('mousedown', mouseDown);
     document.addEventListener('mouseup', mouseUp);
@@ -16,20 +14,28 @@ export default function loadHandle() {
 
 function moveHandle(e) {
     if (handleClicked) {
-        let pos = Math.max(Math.min(e.pageY - offset, 170), 60)
-        handle.style.top = pos + 'px';
+        let pos = Math.max(Math.min(e.pageY - start, 100), -10)
+        handle.style.transform = "translateY("+pos+"px)";
+        placeholderToast.style.transform = "translate(50%, "+pos+"px)";
     }
 }
 
 function mouseDown(e) {
     handleClicked = true;
-    offset = e.pageY - handle.offsetTop + e.offsetY;
+    start = e.pageY;
+    handle.classList.remove("animate");
+    placeholderToast.classList.remove("animate");
 }
 
 function mouseUp(e) {
     if (handleClicked) {
         handleClicked = false;
-        if (handle.offsetTop > 150) {makeToast();}
-        handle.style.top = "70px";
+        if (e.pageY - start > 80) {makeToast();}
+
+        handle.style.transform = "translateY(0px)";
+        placeholderToast.style.transform = "translate(50%, 0px)";
+        
+        handle.classList.add("animate");
+        placeholderToast.classList.add("animate");
     }
 }
