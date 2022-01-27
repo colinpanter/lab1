@@ -1,7 +1,18 @@
-export function toaster(type) {
-    const toast = new Toast(type, document.getElementById("input").value);
-    toast.showToast();
+let currentType = 'Warning';
+
+export function toaster() {
+  const toast = new Toast(currentType, document.getElementById("input").value);
+  toast.showToast();
   }
+
+export function choose(type) {
+  var children = document.getElementById("buttonPanel").children;
+  for (let i = 0; i < children.length; i++) {
+    let element = children[i];
+    element.className = (element.value===type) ? "unselectable active button" : "unselectable button";
+  };
+  currentType = type;
+}
 
 class Toast{
   constructor(type, message){
