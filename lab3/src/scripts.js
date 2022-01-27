@@ -1,4 +1,10 @@
+import loadHandle from "./handle.js";
+
 let currentType = 'Warning';
+
+export function load() {
+  loadHandle();
+}
 
 export function toaster() {
   const toast = new Toast(currentType, document.getElementById("input").value);
@@ -12,6 +18,10 @@ export function choose(type) {
     element.className = (element.value===type) ? "unselectable active button" : "unselectable button";
   };
   currentType = type;
+}
+
+export function moveHandle(e) {
+  console.log(e);
 }
 
 class Toast{

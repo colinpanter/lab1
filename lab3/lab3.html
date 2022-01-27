@@ -10,13 +10,14 @@
 
 	<title>Testing Lab</title>
     <script type="module">
-        import {toaster, choose} from "./src/scripts.js";
+        import {toaster, choose, load} from "./src/scripts.js";
         window.toaster = toaster;
         window.choose = choose;
+		window.load = load;
     </script>
 
 </head>
-<body>
+<body onload="load()">
 	<div id="nav">
 		<div id="logo">
 			Lab 3
@@ -24,7 +25,7 @@
 	</div>
     <br/>
 	<div id="page">
-    	<div id="controlPanel">
+    	<div id="controlPanel" class="unselectable">
 			<input id="input">
 			<div id="buttonPanel" class="unselectable">
         		<button  type="button" class="unselectable active button" onclick="choose('Warning')" value="Warning">Erreur</button>
