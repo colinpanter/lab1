@@ -10,6 +10,7 @@ export default function loadToaster() {
     for (let i = 0; i < children.length; i++) {
         let element = children[i];
         element.addEventListener("click", function() {chooseType(element.value)});
+        element.addEventListener("click", function() {makeToast(element.value)});
     };
 }
 
@@ -45,6 +46,7 @@ export function makeToast() {
     toast.appendChild(text);
 
     toast.onclick = function(){toast.remove();};
+    setTimeout(function(){toast.remove();}, 3000)
 
     document.getElementById("plate").appendChild(toast);
 }

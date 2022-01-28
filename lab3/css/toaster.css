@@ -2,6 +2,7 @@
   width: 160px;
   height: 200px;
   position: relative;
+  margin: 30px;
 
   display: flex;
   flex-direction: column;
@@ -51,13 +52,16 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  position: relative;
+
+  position: absolute;
+  bottom: 0;
+  left: 20px;
 
   background-color: gray;
   border-radius: 70px 70px 0% 0%;
   border: 2px solid black;
   border-bottom: 0px;
-  margin: 0;
+  /* margin: 20px 20px 0 20px; */
 }
 #placeholderToast {
   position: absolute;
@@ -88,8 +92,9 @@
 
 #plate {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 #buttonPanel {
