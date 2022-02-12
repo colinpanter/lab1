@@ -28,15 +28,22 @@ export const getTasks = async function(){
 
         let divTask = document.createElement("div");
         let text = document.createElement("p");
+        let newInput = document.createElement("input");
+        let buttonBox = document.createElement("div")
         let buttonDelete = document.createElement("button");
         let buttonEdit = document.createElement("button");
-        let newInput = document.createElement("input");
 
         newInput.className = "newInput"
         divTask.className = "divTask";
+
+        buttonBox.className = "buttonBox";
+        buttonDelete.className = "button";
+        buttonEdit.className = "button";
+
         text.innerHTML = task.name;
         buttonDelete.innerHTML = "DELETE";
         buttonEdit.innerHTML = "EDIT";
+
         buttonDelete.onclick = function(){deleteTask(task.id)};
         buttonEdit.onclick = function(){
             newInput.placeholder = task.name;
@@ -45,9 +52,11 @@ export const getTasks = async function(){
             divTask.appendChild(newInput);
         }
 
+        buttonBox.appendChild(buttonEdit);
+        buttonBox.appendChild(buttonDelete);
+
         divTask.appendChild(text);
-        divTask.appendChild(buttonEdit);
-        divTask.appendChild(buttonDelete);
+        divTask.appendChild(buttonBox);
 
         fuckYouColin.appendChild(divTask);
     }

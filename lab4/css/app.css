@@ -28,7 +28,42 @@ html, body {
     align-items: center;
 }
 
+#tasksPlate{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .divTask{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    width: 250px;
+    height: 150px;
+
+    background-color: lightblue;
+    color: black;
+    padding: 10px;
+
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.buttonBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    width: 100px;
+    height: 30px;
+    background-color: darkgray;
+    border-radius: 5px
+}
+.button:hover{
+    filter: brightness(90%);
+    cursor: pointer;
 }
