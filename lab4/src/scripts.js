@@ -14,7 +14,7 @@ export const sendTasks = async function(){
 
 export const load = async function(){
     const response = await fetch(fullUrl);
-    const jsonResponse = await response.json();
+    // const jsonResponse = await response.json();
 }
 
 export const getTasks = async function(){
