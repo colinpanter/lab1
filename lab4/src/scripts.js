@@ -20,36 +20,42 @@ export const load = async function(){
 export const getTasks = async function(){
     const response = await fetch(fullUrl);
     const jsonResponse = await response.json();
-    const fuckYouColin = document.getElementById("tasksPlate");
+    const fuckYouColin = document.getElementById("page");
+    const ctrlPanel = document.getElementById("controlPanel");
     fuckYouColin.innerHTML = "";
+    fuckYouColin.appendChild(ctrlPanel);
 
     for(let i=0; i < jsonResponse.tasks.length ; i++){
         let task = jsonResponse.tasks[i];
 
         let divTask = document.createElement("div");
-        let text = document.createElement("p");
+        let text = document.createElement("textarea");
         let newInput = document.createElement("input");
         let buttonBox = document.createElement("div")
         let buttonDelete = document.createElement("button");
         let buttonEdit = document.createElement("button");
+        
 
         newInput.className = "newInput"
         divTask.className = "divTask";
 
+        text.className = "text";
         buttonBox.className = "buttonBox";
         buttonDelete.className = "button";
         buttonEdit.className = "button";
 
-        text.innerHTML = task.name;
+        text.value = task.name;
+        text.rows = 3;
         buttonDelete.innerHTML = "DELETE";
-        buttonEdit.innerHTML = "EDIT";
+        buttonEdit.innerHTML = "UPDATE";
 
         buttonDelete.onclick = function(){deleteTask(task.id)};
         buttonEdit.onclick = function(){
-            newInput.placeholder = task.name;
-            newInput.onkeydown = function(){clickPress(event, task.id, newInput.value)};
-            text.innerHTML = "";
-            divTask.appendChild(newInput);
+            // newInput.placeholder = task.name;
+            // newInput.onkeydown = function(){clickPress(event, task.id, newInput.value)};
+            // text.innerHTML = "";
+            // divTask.appendChild(newInput);
+            updateTask(task.id, text.value)
         }
 
         buttonBox.appendChild(buttonEdit);
@@ -64,6 +70,15 @@ export const getTasks = async function(){
 
 const deleteTask = async function(taskID){
     const deleteRequest = await fetch(fullUrl + "/" + taskID, {method:"delete"});
+    getTasks();
+}
+
+const updateTask = async function(taskID, newName) {
+    const putRequest = await fetch(fullUrl + "/" + taskID, {
+        method:"put",
+        body:JSON.stringify({name:newName}),
+        headers:new Headers({"Content-Type": "application/json"})
+    });
     getTasks();
 }
 

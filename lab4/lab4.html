@@ -24,11 +24,13 @@
 	</div>
     <br/>
 	<div id="page">
-		<button id="button" onclick="getTasks()">Fetch Tasks</button>
-		<button id="button send" onclick="sendTasks()">Send</button>
-		<textarea id="input" rows="3"></textarea>
-
-		<div id="tasksPlate"></div>
+		<div id="controlPanel">
+			<textarea id="input" class="text" rows="3"></textarea>
+			<div class="buttonPanel">
+				<button id="button" class="button" onclick="getTasks()">Fetch Tasks</button>
+				<button id="button send" class="button" onclick="sendTasks()">Send</button>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
