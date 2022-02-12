@@ -24,6 +24,11 @@ html, body {
     display: flex;
     justify-content: center;
     width: 100%;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+}
+
+.divTask{
+    display: flex;
+    flex-direction: row;
 }

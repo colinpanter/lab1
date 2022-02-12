@@ -8,8 +8,11 @@
 
 	<title>Testing Lab</title>
     <script type="module">
-        import load from "./src/scripts.js";
+        import {sendTasks, load, getTasks} from "./src/scripts.js";
+
+		window.sendTasks = sendTasks;
 		window.load = load;
+		window.getTasks = getTasks;
     </script>
 
 </head>
@@ -21,8 +24,11 @@
 	</div>
     <br/>
 	<div id="page">
+		<button id="button" onclick="getTasks()">Fetch Tasks</button>
 		<textarea id="input" rows="3"></textarea>
-		<button id="button send">Send</button>
+		<button id="button send" onclick="sendTasks()">Send</button>
+
+		<div id="tasksPlate"></div>
 	</div>
 </body>
 </html>
