@@ -1,6 +1,14 @@
 const url = 'https://glo3102lab4.herokuapp.com/';
-const id = "473f00cd-833c-4195-a269-7f06a9c5b940";
-const fullUrl = url + id + "/tasks";
+let id;
+let fullUrl;
+
+export const load = async function(){
+    const response = await fetch(url + "users", {method:"post"});
+    const jsonResponse = await response.json();
+    id = jsonResponse.id
+    fullUrl = url + id + "/tasks";
+    getTasks();
+}
 
 export const sendTasks = async function(){
     const sendRequest = await fetch(fullUrl, {
@@ -12,51 +20,39 @@ export const sendTasks = async function(){
     getTasks();
 }
 
-export const load = async function(){
-    const response = await fetch(fullUrl);
-    // const jsonResponse = await response.json();
-}
-
 export const getTasks = async function(){
     const response = await fetch(fullUrl);
     const jsonResponse = await response.json();
-    const fuckYouColin = document.getElementById("page");
+
+    const page = document.getElementById("page");
     const ctrlPanel = document.getElementById("controlPanel");
-    fuckYouColin.innerHTML = "";
-    fuckYouColin.appendChild(ctrlPanel);
+
+    page.innerHTML = "";
+    page.appendChild(ctrlPanel);
 
     for(let i=0; i < jsonResponse.tasks.length ; i++){
-        let task = jsonResponse.tasks[i];
+        const task = jsonResponse.tasks[i];
 
-        let divTask = document.createElement("div");
-        let text = document.createElement("textarea");
-        let newInput = document.createElement("input");
-        let buttonBox = document.createElement("div")
-        let buttonDelete = document.createElement("button");
-        let buttonEdit = document.createElement("button");
-        
-
-        newInput.className = "newInput"
+        const divTask = document.createElement("div");
         divTask.className = "divTask";
-
+        
+        const text = document.createElement("textarea");
         text.className = "text";
+        text.value = task.name;
+        text.rows = 3;
+
+        const buttonBox = document.createElement("div")
+        const buttonDelete = document.createElement("button");
+        const buttonEdit = document.createElement("button");
+
         buttonBox.className = "buttonBox";
         buttonDelete.className = "button";
         buttonEdit.className = "button";
-
-        text.value = task.name;
-        text.rows = 3;
         buttonDelete.innerHTML = "DELETE";
         buttonEdit.innerHTML = "UPDATE";
 
         buttonDelete.onclick = function(){deleteTask(task.id)};
-        buttonEdit.onclick = function(){
-            // newInput.placeholder = task.name;
-            // newInput.onkeydown = function(){clickPress(event, task.id, newInput.value)};
-            // text.innerHTML = "";
-            // divTask.appendChild(newInput);
-            updateTask(task.id, text.value)
-        }
+        buttonEdit.onclick = function(){updateTask(task.id, text.value)}
 
         buttonBox.appendChild(buttonEdit);
         buttonBox.appendChild(buttonDelete);
@@ -64,7 +60,7 @@ export const getTasks = async function(){
         divTask.appendChild(text);
         divTask.appendChild(buttonBox);
 
-        fuckYouColin.appendChild(divTask);
+        page.appendChild(divTask);
     }
 }
 
@@ -80,15 +76,4 @@ const updateTask = async function(taskID, newName) {
         headers:new Headers({"Content-Type": "application/json"})
     });
     getTasks();
-}
-
-const clickPress = async function(event, taskID, test) {
-    if (event.keyCode == 13) {
-        const putRequest = await fetch(fullUrl + "/" + taskID, {
-            method:"put",
-            body:JSON.stringify({name:test}),
-            headers:new Headers({"Content-Type": "application/json"})
-        });
-        getTasks();
-    }
 }
