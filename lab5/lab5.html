@@ -14,7 +14,7 @@
 <body>
 	<div id="nav">
 		<div id="logo">
-			Lab 4
+			Lab 5
 		</div>
 	</div>
     <br/>
@@ -26,7 +26,7 @@
 				<button id="button send" class="button" @click="createTodo">Add task</button>
 			</div>
 		</div>
-		
+
 		<div v-for="todo in todos" :key="todo.id" class="divTask">
 			<textarea v-model="todo.name" id="input" class="text" rows="3"></textarea>
 			<div class="buttonBox">
