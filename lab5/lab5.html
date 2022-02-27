@@ -11,7 +11,7 @@
 
 </head>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-<body onload="load()">
+<body>
 	<div id="nav">
 		<div id="logo">
 			Lab 4
@@ -20,10 +20,18 @@
     <br/>
 	<div id="page">
 		<div id="controlPanel">
-			<textarea id="input" class="text" rows="3"></textarea>
+			<textarea v-model="inputValue" id="input" class="text" rows="3"></textarea>
 			<div class="buttonPanel">
-				<button id="button" class="button" onclick="getTasks()">Refresh</button>
-				<button id="button send" class="button" onclick="sendTasks()">Add task</button>
+				<button id="button" class="button" @click="refreshTodos">Refresh</button>
+				<button id="button send" class="button" @click="createTodo">Add task</button>
+			</div>
+		</div>
+		
+		<div v-for="todo in todos" :key="todo.id" class="divTask">
+			<textarea v-model="todo.name" id="input" class="text" rows="3"></textarea>
+			<div class="buttonBox">
+				<button id="button" class="button" @click="updateTodo(todo)">UPDATE</button>
+				<button id="button send" class="button" @click="deleteTodo(todo)">DELETE</button>
 			</div>
 		</div>
 	</div>
