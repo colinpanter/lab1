@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Montserrat'>
+        <link rel="stylesheet" href="/app.css" type="text/css">
+        <title>Testing Lab</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.js"></script>
+        <script>
+            function logOut(){
+                Cookies.remove("info_user_cookie");
+                window.location.replace('/login');
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <div id="nav">
+		<div id="logo">
+			Lab 8
+		</div>
+	</div>
+    <br/>
+	    <div id="page">
+            <h2>Username : <%= username%></h2>
+            <div>
+                <button onclick="logOut()">
+                    <label>Log Out</label>
+                </button>
+            </div>
+        </div>
+    </body>
+</html>

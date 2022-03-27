@@ -1,0 +1,20 @@
+{
+    "name": "Lab8",
+    "version": "1.0",
+    "description": "lab8",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon lab8.js"
+    },
+    "author": "Gabriel,Colin et Antoine",
+    "license": "ISC",
+    "dependencies": {
+        "cookie-parser": "^1.4.6",
+        "ejs": "^3.1.6",
+        "express": "^4.17.3",
+        "node": "^17.1.8"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
