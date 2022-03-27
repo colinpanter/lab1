@@ -1,3 +1,4 @@
+//Ne pas oublier de faire npm install et npm start si tu veux tester :)
 const express = require('express'); 
 const app = express(); 
 const PORT = 8000 
