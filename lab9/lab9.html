@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Montserrat'>
+    <link rel="stylesheet" href="css/app.css">
+
+	<title>Testing Lab</title>
+</head>
+<body>
+	<div id="nav">
+		<div id="logo">
+			Lab 9
+		</div>
+	</div>
+    <br/>
+	<div id="page">
+        <div id="username-form">
+            <span>Username</span>
+            <input id="username"/>
+            <button id="username-submit">Submit</button>
+        </div>
+        <div id="chat" style="display: none;">
+            <ul id="messages"></ul>
+            <form id="form" action="">
+                <input id="input" autocomplete="off"/>
+                <button>Send</button>
+            </form>
+        </div>
+	</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    let username = '';
+
+    document.getElementById('username-submit').addEventListener('click', () => {
+        const usernameInput = document.getElementById('username').value;
+        if (usernameInput.length !== 0) {
+            username = usernameInput;
+
+            document.getElementById('username-form').style = "display: none;";
+            document.getElementById('chat').style = '';
+
+            const socket = io();
+
+            const messages = document.getElementById('messages');
+            const form = document.getElementById('form');
+            const input = document.getElementById('input');
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                if (input.value) {
+                    socket.emit('chat message', {username, message: input.value});
+                    input.value = '';
+                }
+            });
+
+            socket.on('chat message', ({username: name, message}) => {
+                const item = document.createElement('li');
+                item.textContent = `${name}: ${message}`;
+                messages.appendChild(item);
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+        }
+    })
+</script>
+</body>
+</html>
