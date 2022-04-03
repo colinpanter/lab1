@@ -6,7 +6,7 @@ const server = http.createServer(app)
 const {Server} = require('socket.io')
 const io = new Server(server)
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/css'));
 
 
 app.get('/', (req, res) => {
