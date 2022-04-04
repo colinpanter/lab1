@@ -17,15 +17,15 @@
     <br/>
 	<div id="page">
         <div id="username-form">
-            <span>Username</span>
-            <input id="username"/>
-            <button id="username-submit">Submit</button>
+            <!-- <span>Username</span> -->
+            <input id="username" placeholder="Username"/>
+            <button id="username-submit">Enter</button>
         </div>
         <div id="chat" style="display: none;">
-            <ul id="messages"></ul>
+            <div id="messages"></div>
             <form id="form" action="">
                 <input id="input" autocomplete="off"/>
-                <button>Send</button>
+                <button id="send"></button>
             </form>
         </div>
 	</div>
@@ -40,7 +40,7 @@
             username = usernameInput;
 
             document.getElementById('username-form').style = "display: none;";
-            document.getElementById('chat').style = '';
+            document.getElementById('chat').style = 'display: flex;';
 
             const socket = io();
 
@@ -57,8 +57,20 @@
             });
 
             socket.on('chat message', ({username: name, message}) => {
-                const item = document.createElement('li');
-                item.textContent = `${name}: ${message}`;
+                const item = document.createElement('div');
+                item.className = 'messageBox'
+                // item.textContent = `${name}: ${message}`;
+
+                const nameDiv = document.createElement('div')
+                const messsageDiv = document.createElement('div')
+                nameDiv.className = 'name'
+                messsageDiv.className = 'message'
+                nameDiv.textContent = name
+                messsageDiv.textContent = message
+
+                item.appendChild(nameDiv)
+                item.appendChild(messsageDiv)
+
                 messages.appendChild(item);
                 window.scrollTo(0, document.body.scrollHeight);
             });
